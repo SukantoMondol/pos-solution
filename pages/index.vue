@@ -553,7 +553,7 @@ onUnmounted(() => {
 
 .search-input {
   height: 15px;
-  margin-left: 4px;
+  margin-right: 4px;
 }
 
 .filter-section button {
