@@ -89,7 +89,7 @@
       <!-- Filter Section -->
       <div class="filter-section">
         <div>
-          <select v-model="selectedDataType" @change="onPageSelect">
+          <select v-model="selectedDataType" @change="onPageSelect" class="filter-select">
             <option value="home">Select Page</option>
             <option value="account">Account</option>
             <option value="expense">Expense</option>
@@ -125,9 +125,9 @@
           </select>
         </div>
         <div>
-          <input type="text" v-model="searchQuery" placeholder="Search" @keyup.enter="filterAndDisplay">
+          <input type="text" v-model="searchQuery" placeholder="Search" @keyup.enter="filterAndDisplay" class="search-input">
         </div>
-        <button @click="filterAndDisplay">Search</button>
+        <button @click="filterAndDisplay">Apply Filter</button>
       </div>
     </div>
 
@@ -531,6 +531,7 @@ onUnmounted(() => {
   gap: 10px;
   align-items: end;
   margin-top: 10px;
+  margin-right: 2px;
 }
 
 .filter-section > div {
@@ -544,29 +545,27 @@ onUnmounted(() => {
   border: 1px solid #ddd;
   border-radius: 4px;
   font-size: 14px;
-  background: white;
-  color: #333;
-  box-sizing: border-box;
+}
+
+.filter-select {
+  height: 40px;
+}
+
+.search-input {
+  height: 15px;
+  margin-left: 4px;
 }
 
 .filter-section button {
-  background: white;
-  color: #333;
-  border: 1px solid #ddd;
+  background: #6c757d;
+  color: white;
+  border: none;
   padding: 12px 20px;
   border-radius: 4px;
   cursor: pointer;
   white-space: nowrap;
   font-size: 14px;
   min-height: 45px;
-  flex: 1;
-  transition: all 0.3s ease;
-}
-
-.filter-section button:hover {
-  background: #f8f9fa;
-  border-color: #007bff;
-  color: #007bff;
 }
 
 .balance-swipe-container {
