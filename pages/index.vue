@@ -127,7 +127,7 @@
         <div>
           <input type="text" v-model="searchQuery" placeholder="Search" @keyup.enter="filterAndDisplay">
         </div>
-        <button @click="filterAndDisplay">Apply Filter</button>
+        <button @click="filterAndDisplay">Search</button>
       </div>
     </div>
 
@@ -544,18 +544,29 @@ onUnmounted(() => {
   border: 1px solid #ddd;
   border-radius: 4px;
   font-size: 14px;
+  background: white;
+  color: #333;
+  box-sizing: border-box;
 }
 
 .filter-section button {
-  background: #6c757d;
-  color: white;
-  border: none;
+  background: white;
+  color: #333;
+  border: 1px solid #ddd;
   padding: 12px 20px;
   border-radius: 4px;
   cursor: pointer;
   white-space: nowrap;
   font-size: 14px;
   min-height: 45px;
+  flex: 1;
+  transition: all 0.3s ease;
+}
+
+.filter-section button:hover {
+  background: #f8f9fa;
+  border-color: #007bff;
+  color: #007bff;
 }
 
 .balance-swipe-container {
