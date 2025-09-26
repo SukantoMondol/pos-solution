@@ -89,7 +89,7 @@
       <!-- Filter Section -->
       <div class="filter-section">
         <div>
-          <select v-model="selectedDataType">
+          <select v-model="selectedDataType" @change="onPageSelect">
             <option value="home">Select Page</option>
             <option value="account">Account</option>
             <option value="expense">Expense</option>
@@ -269,17 +269,36 @@ const onPageSelect = () => {
   // Automatically navigate when a page is selected from dropdown
   if (selectedDataType.value && selectedDataType.value !== 'home') {
     navigateTo(`/${selectedDataType.value}`)
+    // Reset to home after navigation
+    selectedDataType.value = 'home'
   }
 }
 
 const filterAndDisplay = () => {
   console.log('Filtering with:', { selectedDataType: selectedDataType.value, searchQuery: searchQuery.value })
   
+  // If there's a search query, show alert for now (can be enhanced later)
+  if (searchQuery.value.trim()) {
+    alert(`Searching for: "${searchQuery.value}"`)
+    searchQuery.value = ''
+  }
+  
   // Navigate to the selected page
   if (selectedDataType.value && selectedDataType.value !== 'home') {
     navigateTo(`/${selectedDataType.value}`)
+    // Reset to home after navigation
+    selectedDataType.value = 'home'
   }
 }
+
+// Watch for changes in selectedDataType
+watch(selectedDataType, (newValue) => {
+  if (newValue && newValue !== 'home') {
+    navigateTo(`/${newValue}`)
+    // Reset to home after navigation
+    selectedDataType.value = 'home'
+  }
+})
 
 const handleLogout = () => {
   if (process.client) {
